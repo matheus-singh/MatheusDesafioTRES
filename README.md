@@ -8,7 +8,7 @@ Aluno: **Matheus Singh Cardoso**
 ### Passos para executar
 1. Clone este repositório:
    ```bash
-   git clone [https://github.com/matheus-singh/MatheusDesafioTRES.git](https://github.com/matheus-singh/MatheusDesafioTRES)
+   git clone https://github.com/matheus-singh/MatheusDesafioTRES
    ```
 2. Importe o projeto em sua IDE de preferência (recomendado: IntelliJ IDEA ou Eclipse).
 3. Configure o ambiente e execute a aplicação.
