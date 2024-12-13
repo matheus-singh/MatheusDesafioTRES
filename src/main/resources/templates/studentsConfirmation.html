@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Confirmação de Cadastro</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .confirmation-message {
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .student-details {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+        .student-details p {
+            margin: 10px 0;
+        }
+        .student-details h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .button-group form {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .button-group button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            width: 150px;
+            transition: background-color 0.3s ease;
+        }
+        .confirm-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .confirm-btn:hover {
+            background-color: #45a049;
+        }
+        .edit-btn {
+            background-color: #FFA500;
+            color: white;
+        }
+        .edit-btn:hover {
+            background-color: #e68a00;
+        }
+        .cancel-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .cancel-btn:hover {
+            background-color: #e0352f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Confirmação de Cadastro</h1>
+
+    <div class="confirmation-message">
+        <p>Você está prestes a confirmar o cadastro do estudante. Confira as informações abaixo:</p>
+    </div>
+
+    <div class="student-details">
+        <h2>Detalhes do Estudante:</h2>
+        <p><strong>Nome:</strong> <span th:text="${student.name}"></span></p>
+        <p><strong>Data de Nascimento:</strong> <span th:text="${student.birthDate}"></span></p>
+        <p><strong>UF:</strong> <span th:text="${student.uf}"></span></p>
+        <p><strong>Cidade:</strong> <span th:text="${student.city}"></span></p>
+        <p><strong>Logradouro:</strong> <span th:text="${student.street}"></span></p>
+        <p><strong>CEP:</strong> <span th:text="${student.cep}"></span></p>
+        <p><strong>Curso:</strong> <span th:text="${student.course}"></span></p>
+    </div>
+
+    <div class="button-group">
+        <!-- Botão de confirmação que submete o cadastro -->
+        <form role="form" th:action="@{/students/register/confirm}" method="POST">
+            <input type="hidden" th:field="*{student.name}" />
+            <input type="hidden" th:field="*{student.birthDate}" />
+            <input type="hidden" th:field="*{student.cep}" />
+            <input type="hidden" th:field="*{student.course}" />
+            <button type="submit" class="confirm-btn">Confirmar</button>
+        </form>
+
+        <!-- Botão de editar que leva de volta ao formulário de cadastro -->
+        <form action="/students/register" method="GET">
+            <button type="submit" class="edit-btn">Editar</button>
+        </form>
+
+        <!-- Botão de cancelar que leva à página inicial ou para outra página -->
+        <form action="/students" method="GET">
+            <button type="submit" class="cancel-btn">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
